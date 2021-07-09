@@ -14,8 +14,11 @@ const favoriteFood = function () {
 //Q2 
 
   const updateFavoriteFood = function (newValue) {
-    let myFavoriteFood = newValue
+    myFavoriteFood = newValue
      return myFavoriteFood
+     // لو ما حطيت ريتيرن عادي لانو
+     // السؤال قللي وظيفة الفنكشن بس يعدل القيمة 
+//فعادي لو ما رجعها 
   };
 
 
@@ -31,16 +34,16 @@ const favoriteFood = function () {
   };
 
   const counter1 = createCounter() ; 
-const counter2 = createCounter() ;
+  const counter2 = createCounter() ;
 
-
+// Q4 
 const createCounter1 = function (start) {
   
   let counter = start ;
 
   return function() {
 
-     return counter++ ;
+     return ++counter ;
   }
 
 };
@@ -55,7 +58,7 @@ let age = 25;
 if (true) {
   age = 30;
 }
-age; //->  
+age; //->  30
 
 // BECOUSE THE IF STATEMENT VALUE IS TUE  SO IT WILL  CHANGE 
 //THE VALUE OF AGE TO 30  
@@ -66,7 +69,7 @@ const myName = "John";
 if (true) {
   const myName = "Jane";
 }
-myName; // ERROR becouse myName is a const we cant change its value  
+myName; // john
 
 //Q2
 
@@ -80,7 +83,9 @@ const func1 = function () {
 
   return number;
 };
-
+// هسا هو شايف ال ليت اللي جوا ال فنكشن وبتعامل معها 
+// كانها شي جديد  وبرجعها 15 
+// 
 func1(); // 15 
 
 const func2 = function (age) {
@@ -93,31 +98,28 @@ const func2 = function (age) {
   return age;
 };
 
-func2(26); // 20
+func2(26); // 10
 
 
 //Q3 
-
+let strart1 = 7;
 const countDown = function () {
-  let strart1 = 7;
-  return function () {
-if (strart1 !== 0) { 
+ 
+if (strart1 > 0 ) { 
   return start1-- ;
 }
 else {return 'count down is over'}
 
   
-}
 };
 
+
 //Q4 
-
+// ما في داعي ارجع
+// اعطيه قيمة يبلش منها زز رح ياخد اللي بالسؤال اللي قبلو 
 const countUp = function () {
-
-  
   return function () {
-  strart1 = 0;
-  return start1-- ;
+  return ++start1 ;
 }
 };
 
@@ -134,15 +136,13 @@ const resetCount = function (start) {
 //how can i keep the old parameter ??? 
 
 const addToList = function (toDo) {
- 
-   const oldSave = function ()
-  {
-  addToList() + toDo 
-  }
- return  oldSave; 
 
-};
+  
+ return   old +  toDo ; 
 
+} 
+
+let old = addToList ;
 
 //Q7 
 
