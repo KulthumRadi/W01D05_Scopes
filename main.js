@@ -131,10 +131,18 @@ const resetCount = function (start) {
 
 };
 //Q6 
-
+//how can i keep the old parameter 
 const addToList = function (toDo) {
-  // TODO: Your code here
+  const oldSave = function ()
+  {
+  addToList() + toDo 
+  }
+ return  oldSave; 
+
 };
 
-let x =5 ;
+
+//Q7 
+
+
 
