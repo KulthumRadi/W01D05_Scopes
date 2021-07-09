@@ -59,10 +59,82 @@ age; //->
 
 // BECOUSE THE IF STATEMENT VALUE IS TUE  SO IT WILL  CHANGE 
 //THE VALUE OF AGE TO 30  
+// Practice
 
+//Q1
 const myName = "John";
 if (true) {
   const myName = "Jane";
 }
 myName; // ERROR becouse myName is a const we cant change its value  
+
+//Q2
+
+let number = 10;
+const func1 = function () {
+  let number = 15;
+
+  if (true) {
+    let  number = 24;
+  }
+
+  return number;
+};
+
+func1(); // 15 
+
+const func2 = function (age) {
+  age = 10;
+  if (true) {
+    let age = 24;
+    age = 20;
+  }
+
+  return age;
+};
+
+func2(26); // 20
+
+
+//Q3 
+
+const countDown = function () {
+  let strart1 = 7;
+  return function () {
+if (strart1 !== 0) { 
+  return start1-- ;
+}
+else {return 'count down is over'}
+
+  
+}
+};
+
+//Q4 
+
+const countUp = function () {
+
+  
+  return function () {
+  strart1 = 0;
+  return start1-- ;
+}
+};
+
+
+//Q5
+
+const resetCount = function (start) {
+    start1=start ;
+
+  return 'the count has been reset' ;
+
+};
+//Q6 
+
+const addToList = function (toDo) {
+  // TODO: Your code here
+};
+
+let x =5 ;
 
