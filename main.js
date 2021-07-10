@@ -276,3 +276,327 @@ let min =  Number.POSITIVE_INFINITY;
   return" the maximum number is: " +  ???  + "  and the minimum number is " + ???? 
 };
 
+/* ==================================================================== */
+/* ====================== Extra Practice Section ====================== */
+/* ==================================================================== */
+
+/* ================================ Q1 ================================ */
+/* 
+Write a function minMax that accepts a number argument number and returns a string representing the maximum number and the minimum number, read the comments for more information.
+HINT search for NEGATIVE_INFINITY and POSITIVE_INFINITY on MDN
+*/
+
+// every time the function it is called it must check if the passed argument is the maximum number or minimum or
+// both and preserve the result for later invocations
+
+let min = Number.POSITIVE_INFINITY;
+let max = Number.NEGATIVE_INFINITY;
+const minMax = function (number) {
+  if (number > max) {
+    max = number;
+  }
+  if (number < min) {
+    min = number;
+  }
+  return "the maximum number is: " + max + " and the minimum number is: " + min;
+};
+
+/*  
+minMax(5); // => the maximum number is: 5 and the minimum number is 5
+minMax(2); // => the maximum number is: 5 and the minimum number is 2
+minMax(3); // => the maximum number is: 5 and the minimum number is 2
+minMax(7); // => the maximum number is: 7 and the minimum number is 2
+minMax(0); // => the maximum number is: 7 and the minimum number is 0
+*/
+
+/* ================================ Q2 ================================ */
+/* 
+Modify the `rockPaperScissors` function from the previous lesson to save the score of how many times the user has won and how many the user has lost. Return the score with every invocation.*/
+
+// a function that randomly outputs `rock` or `paper` or `scissors`
+const randomMove = function () {
+  // gets a random number from 1-3
+  const result = Math.ceil(Math.random() * 3);
+
+  if (result === 1) {
+    return "rock";
+  } else if (result === 2) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
+};
+
+let totalWins = 0;
+let totalLoses = 0;
+
+const rockPaperScissors = function (move) {
+  const random = randomMove();
+
+  if (move === random) {
+    return "Won:" + totalWins + ", Lost:" + totalLoses;
+  } else if (move === "rock") {
+    if (random === "scissors") {
+      totalWins += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else if (move === "paper") {
+    if (random === "rock") {
+      totalWins += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else if (move === "scissors") {
+    if (random === "paper") {
+      totalWins += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else {
+    return "invalid move";
+  }
+};
+
+/* 
+rockPaperScissors("rock"); // => "Won: 1, Lost:0"
+*/
+
+/* ================================ Q3 ================================ */
+/* 
+Modify the rockPaperScissors function to have a score limit such as winning five times then reset the score back to zero.
+*/
+// a function that randomly outputs `rock` or `paper` or `scissors`
+const randomMove = function () {
+  // gets a random number from 1-3
+  const result = Math.ceil(Math.random() * 3);
+
+  if (result === 1) {
+    return "rock";
+  } else if (result === 2) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
+};
+
+let totalWins = 0;
+let totalLoses = 0;
+let scoreLimit = 5;
+
+const rockPaperScissors = function (move) {
+  if (totalWins === scoreLimit || totalLoses === scoreLimit) {
+    totalWins = 0;
+    totalLoses = 0;
+  }
+
+  const random = randomMove();
+
+  if (move === random) {
+    return "Won:" + totalWins + ", Lost:" + totalLoses;
+  } else if (move === "rock") {
+    if (random === "scissors") {
+      totalWins += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else if (move === "paper") {
+    if (random === "rock") {
+      totalWins += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      return "Won:" + totalWinPercent + ", Lost:" + totalLoses;
+    }
+  } else if (move === "scissors") {
+    if (random === "paper") {
+      totalWins += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else {
+    return "invalid move";
+  }
+};
+
+/*
+// lets assume the score limit is set to three
+rockPaperScissors("rock"); // => "Won: 2, Lost:2"
+rockPaperScissors("rock"); // => "Won: 2, Lost:3"
+rockPaperScissors("rock"); // => "Won: 1, Lost:0"
+*/
+
+/* ================================ Q4 ================================ */
+/* 
+Modify the rockPaperScissors function to have an optional second boolean parameter reset that when true will reset the game score back to zero.
+*/
+// a function that randomly outputs `rock` or `paper` or `scissors`
+const randomMove = function () {
+  // gets a random number from 1-3
+  const result = Math.ceil(Math.random() * 3);
+
+  if (result === 1) {
+    return "rock";
+  } else if (result === 2) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
+};
+
+let totalWins = 0;
+let totalLoses = 0;
+let scoreLimit = 5;
+
+const rockPaperScissors = function (move, reset) {
+  if (reset) {
+    totalWins = 0;
+    totalLoses = 0;
+    return "the game has been reset";
+  }
+
+  if (totalWins === scoreLimit || totalLoses === scoreLimit) {
+    totalWins = 0;
+    totalLoses = 0;
+  }
+
+  const random = randomMove();
+
+  if (move === random) {
+    return "Won:" + totalWins + ", Lost:" + totalLoses;
+  } else if (move === "rock") {
+    if (random === "scissors") {
+      totalWins += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else if (move === "paper") {
+    if (random === "rock") {
+      totalWins += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      return "Won:" + totalWinPercent + ", Lost:" + totalLoses;
+    }
+  } else if (move === "scissors") {
+    if (random === "paper") {
+      totalWins += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else {
+    return "invalid move";
+  }
+};
+
+/*
+rockPaperScissors("rock"); // => "Won: 1, Lost:0"
+rockPaperScissors("", true); // => "the game has been reset"
+rockPaperScissors("scissors"); // => "Won: 0, Lost:1"
+*/
+
+/* ================================ Q5 ================================ */
+/* 
+Modify the `rockPaperScissors` function to keep track of the last winner and modify the `randomMove` function to have a 25% chance of picking the same move if the user have lost the previous round, otherwise it picks a random move.
+*/
+
+// a function that randomly outputs `rock` or `paper` or `scissors`
+const randomMove = function (winningMove) {
+  let result;
+  // if the user have lost the previous round there is a 25% chance for the random move to be repeated
+  // since Math.ceil(Math.random() * 4) gets a value 1 to 4 then if it is equal to 4 it will be considered 25% chance
+  if (isUserLoseLast === true && Math.ceil(Math.random() * 4) === 4) {
+    return winningMove;
+  } else {
+    result = Math.ceil(Math.random() * 3);
+  }
+
+  if (result === 1) {
+    return "rock";
+  } else if (result === 2) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
+};
+
+let totalWins = 0;
+let totalLoses = 0;
+scoreLimit = 5;
+let isUserLoseLast = false;
+let lastWinningMove;
+
+const rockPaperScissors = function (move, rest) {
+  if (reset) {
+    totalWins = 0;
+    totalLoses = 0;
+    return "the game has been reset";
+  }
+  if (totalWins === scoreLimit || totalLoses === scoreLimit) {
+    totalWins = 0;
+    totalLoses = 0;
+  }
+
+  const random = randomMove(lastWinningMove);
+
+  if (move === random) {
+    return "Won:" + totalWins + ", Lost:" + totalLoses;
+  } else if (move === "rock") {
+    if (random === "scissors") {
+      totalWins += 1;
+      isUserLoseLast = false;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      isUserLoseLast = true;
+      lastWinningMove = random;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else if (move === "paper") {
+    if (random === "rock") {
+      totalWins += 1;
+      isUserLoseLast = false;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      isUserLoseLast = true;
+      lastWinningMove = random;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else if (move === "scissors") {
+    if (random === "paper") {
+      totalWins += 1;
+      isUserLoseLast = false;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    } else {
+      totalLoses += 1;
+      isUserLoseLast = true;
+      lastWinningMove = random;
+      return "Won:" + totalWins + ", Lost:" + totalLoses;
+    }
+  } else {
+    return "invalid move";
+  }
+};
+
+/* 
+rockPaperScissors("rock"); // => "Won: 0, Lost:1"
+// lets assume that the same random move was picked because of the 25% chance
+rockPaperScissors("rock"); // => "Won: 0, Lost:2"
+rockPaperScissors("rock"); // => "Won: 1, Lost:0"
+*/
+
